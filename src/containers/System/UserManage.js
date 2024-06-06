@@ -56,10 +56,10 @@ class UserManage extends Component {
                                         <td>{item.phonenumber}</td>
                                         <td>
 
-                                            <Button variant="warning"
-                                            >Edit</Button>{' '}
-                                            <Button variant="danger"
-                                            >Delete</Button>{' '}
+                                            <a type="button" class="btn btn-warning"
+                                            >Edit</a>{' '}
+                                            <a type="button" class="btn btn-danger"
+                                            >Delete</a>{' '}
                                         </td>
                                     </tr>
                                 )
