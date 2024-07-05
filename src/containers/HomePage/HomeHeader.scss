@@ -1,8 +1,8 @@
 .home-header-container {
     height: 60px;
-    // border: 1px solid red;
     width: 100%;
     padding: 0px 30px;
+    background-color: #62c4f1;
 
     .home-header-content {
         width: 100%;
@@ -11,12 +11,11 @@
 
         .logo-header {
             width: 20%;
-            border: 1px solid blue;
             display: flex;
             align-items: center;
 
             .header-logo-image {
-                background: url(../../assets/booking-cares-partner.svg) center center no-repeat;
+                background: url(../../assets/booking-cares-partner-removebg-preview.svg) center center no-repeat;
                 height: 100%;
                 width: 100%;
                 cursor: pointer;
@@ -32,7 +31,6 @@
 
         .content-header {
             width: 70%;
-            border: 1px solid orange;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -50,7 +48,6 @@
 
         .header-support {
             width: 10%;
-            border: 1px solid red;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -62,6 +59,76 @@
                 }
 
                 padding-right: 15px;
+            }
+        }
+    }
+}
+
+.home-header-banner {
+    background: url(../../assets/booking-care-banner.png);
+    height: 403px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 30px;
+    margin: 20px 30px;
+    padding: 130px;
+
+    .home-search {
+        width: fit-content;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        padding: 10px;
+        border-radius: 25px;
+        background-color: #cce6ff;
+
+        i {
+            margin: 0px 10px;
+        }
+
+        input {
+            height: 30px;
+            width: 350px;
+            background: transparent;
+            border: none;
+            outline: none;
+
+        }
+    }
+
+    .home-options {
+        display: flex;
+        margin: 130px 0px;
+        justify-content: center;
+
+        .option-child {
+            margin: 0px 10px;
+            cursor: pointer;
+            width: 200px;
+
+            .icon-child {
+                display: flex;
+                width: 40px;
+                height: 40px;
+                background-color: aliceblue;
+                border-radius: 50%;
+                margin: 0 auto;
+                align-items: center;
+                justify-content: center;
+                color: #62c4f1;
+
+                i {
+                    font-size: 25px;
+                }
+            }
+
+            .text-child {
+                margin-top: 10px;
+                text-align: center;
+                font-size: 17px;
+                font-weight: 500;
             }
         }
     }
