@@ -61,8 +61,12 @@ class HomeHeader extends Component {
                                 <FormattedMessage id="homeheader.Support" />
                             </div>
                             <div className='flag'>
-                                <div className={language === languages.VI ? 'language-vi active' : 'language-vi'}><span onClick={() => this.handleChangeLanguage(languages.VI)}>VN </span></div>
-                                <div className={language === languages.EN ? 'language-en active' : 'language-en'}><span onClick={() => this.handleChangeLanguage(languages.EN)}>EN </span></div>
+                                <div className={language === languages.VI ? 'language-vi active' : 'language-vi'}>
+                                    <span onClick={() => this.handleChangeLanguage(languages.VI)}>VN </span>
+                                </div>
+                                <div className={language === languages.EN ? 'language-en active' : 'language-en'}>
+                                    <span onClick={() => this.handleChangeLanguage(languages.EN)}>EN </span>
+                                </div>
                             </div>
                         </div>
                     </div>
