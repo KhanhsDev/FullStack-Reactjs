@@ -1,4 +1,23 @@
 {
+    "homeheader": {
+        "speciallity": "Chuyên khoa",
+        "searchdoctor": "Tìm bác sĩ theo chuyên khoa",
+        "Medical Facilities": "Cơ sở y tế",
+        "Choosing a hospital by clinic": "Chọn bệnh viện theo phòng khám",
+        "Physician": "Bác Sĩ",
+        "Choosing a good doctor": "Chọn bác sĩ giỏi",
+        "Examination Package": "Gói khám",
+        "General health": "Khám sức khỏe tổng quát",
+        "Support": "Hỗ trợ",
+        "language": "VI"
+    },
+    "home-options": {
+        "Specialist Examination": "Khám chuyên khoa",
+        "Telemedicine": "Khám từ xa",
+        "General Examination": "Khám tổng quát",
+        "Medical Tests": "Xét nghiệm y học",
+        "Dental Examination": "Khám nha khoa"
+    },
     "common": {
         "add": "Thêm",
         "edit": "Sửa",

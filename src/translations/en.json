@@ -1,4 +1,23 @@
 {
+    "homeheader": {
+        "speciallity": "speciallity",
+        "searchdoctor": "Find a doctor by specialty",
+        "Medical Facilities": "Medical Facilities",
+        "Choosing a hospital by clinic": "Choosing a hospital by clinic",
+        "Physician": "Physician",
+        "Choosing a good doctor": "Choosing a good doctor",
+        "Examination Package": "Examination Package",
+        "General health": "General Health Examination",
+        "Support": "Support",
+        "language": "EN"
+    },
+    "home-options": {
+        "Specialist Examination": "Specialist Examination",
+        "General Examination": "General Examination",
+        "Telemedicine": "Telemedicine",
+        "Medical Tests": "Medical Tests",
+        "Dental Examination": "Dental Examination"
+    },
     "common": {
         "add": "Add",
         "edit": "Edit",
