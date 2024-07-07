@@ -18,6 +18,11 @@
         "Medical Tests": "Medical Tests",
         "Dental Examination": "Dental Examination"
     },
+    "speciality": {
+        "speciality": "speciallity",
+        "Read more": "Read more",
+        "musculoskeletal joints": "musculoskeletal joints"
+    },
     "common": {
         "add": "Add",
         "edit": "Edit",

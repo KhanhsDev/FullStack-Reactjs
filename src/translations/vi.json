@@ -18,6 +18,11 @@
         "Medical Tests": "Xét nghiệm y học",
         "Dental Examination": "Khám nha khoa"
     },
+    "speciality": {
+        "speciality": "Chuyên khoa",
+        "Read more": "Xem thêm",
+        "musculoskeletal joints": "Cơ xương khớp"
+    },
     "common": {
         "add": "Thêm",
         "edit": "Sửa",
