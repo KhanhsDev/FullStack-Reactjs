@@ -1,0 +1,55 @@
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import { FormattedMessage } from 'react-intl';
+
+
+import './Session.scss'
+
+
+
+class Handbook extends Component {
+
+
+    render() {
+
+        return (
+            <>
+                <div className='session-about'>
+                    <div className='sesstion-about-left'>
+
+                        <div className='session-about-header'>
+                            Tìm hiểu thêm về chúng tôi
+                        </div>
+                        <div className='session-about-video'>
+                            <iframe width="700px" height="400" src="https://www.youtube.com/embed/gylEJuzv1Sw"
+                                title="CÀ PHÊ KHỞI NGHIỆP VTV1 - BOOKINGCARE - HỆ THỐNG ĐẶT LỊCH KHÁM TRỰC TUYẾN"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+
+                            </iframe>
+                        </div>
+                    </div>
+                    <div className='sesstion-about-right'></div>
+                </div>
+
+            </>
+        );
+    }
+
+}
+
+const mapStateToProps = state => {
+    return {
+        isLoggedIn: state.user.isLoggedIn,
+        language: state.app.language
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Handbook);

@@ -18,10 +18,17 @@
         "Medical Tests": "Medical Tests",
         "Dental Examination": "Dental Examination"
     },
-    "speciality": {
-        "speciality": "speciallity",
-        "Read more": "Read more",
-        "musculoskeletal joints": "musculoskeletal joints"
+    "Session": {
+        "speciality": {
+            "speciality": "speciallity",
+            "Read more": "Read more",
+            "musculoskeletal joints": "musculoskeletal joints"
+        },
+        "Medical facility": {
+            "Read more": "Xem thêm",
+            "Medical Facility": "Medical Facility",
+            "VIET DUC UNIVERSITY HOSPITAL": "VIET DUC UNIVERSITY HOSPITAL "
+        }
     },
     "common": {
         "add": "Add",

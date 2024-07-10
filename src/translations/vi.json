@@ -18,10 +18,17 @@
         "Medical Tests": "Xét nghiệm y học",
         "Dental Examination": "Khám nha khoa"
     },
-    "speciality": {
-        "speciality": "Chuyên khoa",
-        "Read more": "Xem thêm",
-        "musculoskeletal joints": "Cơ xương khớp"
+    "Session": {
+        "speciality": {
+            "speciality": "Chuyên khoa",
+            "Read more": "Xem thêm",
+            "musculoskeletal joints": "Cơ xương khớp"
+        },
+        "Medical facility": {
+            "Read more": "Xem thêm",
+            "Medical Facility": "Cơ sở y tế",
+            "VIET DUC UNIVERSITY HOSPITAL": "BỆNH VIỆN VIỆT ĐỨC "
+        }
     },
     "common": {
         "add": "Thêm",

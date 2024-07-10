@@ -6,11 +6,15 @@ import { FormattedMessage } from 'react-intl';
 import './HomeHeader.scss'
 import { languages } from '../../utils';
 import { ChangeLanguageApp } from '../../store/actions';
+
+import Slider from "react-slick";
+
 class HomeHeader extends Component {
     handleChangeLanguage = (language) => {
         this.props.ChangeLanguageAppRedux(language)
     }
     render() {
+
         let language = this.props.language
         console.log(language)
         return (
@@ -62,16 +66,20 @@ class HomeHeader extends Component {
                             </div>
                             <div className='flag'>
                                 <div className={language === languages.VI ? 'language-vi active' : 'language-vi'}>
-                                    <span onClick={() => this.handleChangeLanguage(languages.VI)}>VN </span>
+                                    <span className='flag-language-vi' onClick={() => this.handleChangeLanguage(languages.VI)}> </span>
                                 </div>
                                 <div className={language === languages.EN ? 'language-en active' : 'language-en'}>
-                                    <span onClick={() => this.handleChangeLanguage(languages.EN)}>EN </span>
+                                    <span className='flag-language-en' onClick={() => this.handleChangeLanguage(languages.EN)}> </span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div >
                 <div className='home-header-banner'>
+                    <Slider {...this.props.settings}>
+
+                    </Slider>
+
                     <div className='home-search'>
                         <i class="fas fa-search"></i>
                         <input type="text" placeholder='Tìm chuyên khoa khám bệnh' />
