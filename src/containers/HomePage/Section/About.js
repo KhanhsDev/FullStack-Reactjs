@@ -16,7 +16,7 @@ class Handbook extends Component {
         return (
             <>
                 <div className='session-about'>
-                    <div className='sesstion-about-left'>
+                    <div className='session-about-left'>
 
                         <div className='session-about-header'>
                             Tìm hiểu thêm về chúng tôi
@@ -31,7 +31,7 @@ class Handbook extends Component {
                             </iframe>
                         </div>
                     </div>
-                    <div className='sesstion-about-right'></div>
+                    <div className='session-about-right'></div>
                 </div>
 
             </>

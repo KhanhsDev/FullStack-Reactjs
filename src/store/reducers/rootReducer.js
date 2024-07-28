@@ -7,6 +7,7 @@ import userReducer from "./userReducer";
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import storage from 'redux-persist/lib/storage';
 import { persistReducer } from 'redux-persist';
+import { languages } from '../../utils';
 
 const persistCommonConfig = {
     storage: storage,
@@ -19,8 +20,14 @@ const userPersistConfig = {
     whitelist: ['isLoggedIn', 'userInfo']
 };
 
+const appPersistConfig = {
+    ...persistCommonConfig,
+    key: "app",
+    whitelist: ['language']
+}
+
 export default (history) => combineReducers({
     router: connectRouter(history),
     user: persistReducer(userPersistConfig, userReducer),
-    app: appReducer
+    app: persistReducer(appPersistConfig, appReducer)
 })
