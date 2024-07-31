@@ -57,5 +57,20 @@
             "handbook": "Bài đăng",
             "manage handbook": "Quản lý bài đăng"
         }
+    },
+    "manage-user": {
+        "choose a option": "Chọn một tùy chọn",
+        "add": "thêm mới người dùng",
+        "email": "Email",
+        "password": "Mật khẩu",
+        "first name": "Tên",
+        "last name": "Họ",
+        "address": "Địa chỉ",
+        "phonenumber": "Số điện thoại",
+        "position": "Chức danh",
+        "gender": "Giới tính",
+        "roleID": "Vai trò",
+        "image": "Ảnh",
+        "submit": "Tạo mới"
     }
 }

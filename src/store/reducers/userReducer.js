@@ -24,7 +24,7 @@ const appReducer = (state = initialState, action) => {
                 ...state,
                 isLoggedIn: false,
                 userInfo: null
-            }
+            } 
         default:
             return state;
     }

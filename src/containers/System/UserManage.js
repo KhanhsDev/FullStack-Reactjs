@@ -69,11 +69,11 @@ class UserManage extends Component {
                         createNewUser={this.createNewUser}
                     />
                 </div>
-                <div className='tile text-center mt-3 bold blue '>
+                <div className='title text-center mt-3 bold blue '>
                     Manage User
                 </div>
                 <div className='mx-1 '>
-                    <button type="button" class="btn btn-primary" style={{ width: 130 }}
+                    <button type="button" class="btn btn-primary" style={{ width: 160 }}
                         onClick={(event) => this.handleCreateNewUser(event)}
                     >
 
