@@ -1,0 +1,27 @@
+.uploadImage-container {
+    display: flex;
+
+    .inputUploadImage {
+        border-radius: 3px;
+        cursor: pointer;
+        background-color: #ddd;
+        padding: 5px;
+        text-transform: capitalize;
+        width: 70px;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+    .preview-iamge {
+        border-radius: 3px;
+        margin-left: 3px;
+        border: 1px solid red;
+        height: 33px;
+        width: 110px;
+        background: center center no-repeat;
+        background-size: contain;
+        cursor: pointer;
+    }
+}

@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import { getAllCodeService } from '../../../services/userService';
 import { languages } from '../../../utils/constant';
 import * as actions from '../../../store/actions'
+import './UserRedux.scss'
+import Lightbox from 'react-image-lightbox';
+import 'react-image-lightbox/style.css';
 
 class UserRedux extends Component {
 
@@ -13,6 +16,8 @@ class UserRedux extends Component {
             genderArr: [],
             roleIDArr: [],
             positionArr: [],
+            previewImageUrl: '',
+            isPreviewImage: false,
         }
     }
 
@@ -20,7 +25,9 @@ class UserRedux extends Component {
 
         //USE Redux
         // cach 1
-        this.props.fetchGenderStart()
+        this.props.fetchGenderStart();
+        this.props.fetchPositionStart();
+        this.props.fetchRoleStart()
 
         // cach 2
         // this.props.dispatch(actions.fetchGenderStart())
@@ -61,6 +68,36 @@ class UserRedux extends Component {
                 genderArr: this.props.gender
             })
         }
+        if (prevProps.position !== this.props.position) {
+            this.setState({
+                positionArr: this.props.position
+            })
+        }
+        if (prevProps.role !== this.props.role) {
+            this.setState({
+                roleIDArr: this.props.role
+            })
+        }
+    }
+
+    handleOnChangeFile = (event) => {
+        let data = event.target.files
+        let file = data[0]
+        if (file) {
+
+            let ObjectUrl = URL.createObjectURL(file)
+            this.setState({
+                previewImageUrl: ObjectUrl
+            })
+        }
+    }
+    handleOnclickPreviewImage = () => {
+        if (!this.state.previewImageUrl) {
+            return
+        }
+        this.setState({
+            isPreviewImage: true
+        })
     }
     render() {
 
@@ -69,9 +106,15 @@ class UserRedux extends Component {
 
         // user props gender from redux (adminReducer)  
         let genders = this.props.gender;
+        let position = this.props.position;
+        let roleID = this.props.role;
+
+        let isLoadingGender = this.props.isLoadingGender;
+        let isLoadingPosition = this.props.isLoadingPosition;
+        let isLoadingRole = this.props.isLoadingRole;
+
+        let isPreviewImage = this.state.isPreviewImage;
         let language = this.props.language;
-        let roleID = this.state.roleIDArr;
-        let position = this.state.positionArr;
 
         console.log("check gender from redux props", genders)
         return (
@@ -79,8 +122,13 @@ class UserRedux extends Component {
                 <div className='title mt-5'>
                     <FormattedMessage id='manage-user.add' />
                 </div>
+
                 <div className='container mt-3' style={{ width: 800 }}>
                     <form className="row g-3">
+                        <div >
+                            {/* use setTimeOut */}
+                            {isLoadingGender && isLoadingPosition && isLoadingRole === true ? "Loading data gender" : ""}
+                        </div>
                         <div className="col-md-6">
                             <label htmlFor="inputEmail4" className="form-label">
                                 <FormattedMessage id='manage-user.email' />
@@ -114,17 +162,17 @@ class UserRedux extends Component {
                         </div>
 
                         <div className="col-md-6">
-                            <label htmlFor="inputCity" className="form-label">
+                            <label htmlFor="inputPhonenumber" className="form-label">
                                 <FormattedMessage id='manage-user.phonenumber' />
 
                             </label>
-                            <input type="text" className="form-control" id="inputCity" placeholder='Your phonenumber' />
+                            <input type="text" className="form-control" id="inputPhonenumber" placeholder='Your phonenumber' />
                         </div>
                         <div className="col-md-3">
-                            <label htmlFor="inputState" className="form-label">
+                            <label htmlFor="inputGender" className="form-label">
                                 <FormattedMessage id='manage-user.gender' />
                             </label>
-                            <select id="inputState" className="form-select">
+                            <select id="inputGender" className="form-select">
                                 <option selected>Choose a option</option>
                                 {genders && genders.length > 0 && genders.map((item, index) => {
                                     return (
@@ -138,10 +186,10 @@ class UserRedux extends Component {
                         </div>
 
                         <div className="col-md-3">
-                            <label htmlFor="inputState" className="form-label">
+                            <label htmlFor="inputRole" className="form-label">
                                 <FormattedMessage id='manage-user.roleID' />
                             </label>
-                            <select id="inputState" className="form-select">
+                            <select id="inputRole" className="form-select">
                                 <option selected>Choose a option</option>
                                 {roleID && roleID.length > 0 && roleID.map((item, index) => {
                                     return (
@@ -155,10 +203,10 @@ class UserRedux extends Component {
                         </div>
 
                         <div className="col-md-3">
-                            <label htmlFor="inputState" className="form-label">
+                            <label htmlFor="inputPosition" className="form-label">
                                 <FormattedMessage id='manage-user.position' />
                             </label>
-                            <select id="inputState" className="form-select">
+                            <select id="inputPosition" className="form-select">
                                 <option selected>Choose a option</option>
                                 {position && position.length > 0 && position.map((item, index) => {
                                     return (
@@ -175,7 +223,28 @@ class UserRedux extends Component {
                                 <FormattedMessage id='manage-user.image' />
 
                             </label>
-                            <input type="text" className="form-control" id="inputImage" />
+                            <div className='uploadImage-container'>
+                                <input id='UpLoadImage' type='file' hidden
+                                    onChange={(event) => this.handleOnChangeFile(event)}
+                                />
+                                <label className='inputUploadImage' htmlFor='UpLoadImage'>Tai anh
+                                    <i class="fas fa-upload"></i>
+                                </label>
+                                <div className='preview-iamge'
+                                    style={{
+                                        backgroundImage: `url(${this.state.previewImageUrl})`
+                                    }}
+                                    onClick={() => this.handleOnclickPreviewImage()}
+                                >
+                                    {isPreviewImage && (
+                                        <Lightbox
+                                            mainSrc={this.state.previewImageUrl}
+                                            onCloseRequest={() => this.setState({ isPreviewImage: false })}
+                                        />
+                                    )}
+                                </div>
+
+                            </div>
                         </div>
 
                         <div className="col-12">
@@ -196,7 +265,14 @@ class UserRedux extends Component {
 const mapStateToProps = state => {
     return {
         language: state.app.language,
-        gender: state.admin.genders
+        gender: state.admin.genders,
+        position: state.admin.positions,
+        role: state.admin.roles,
+
+        isLoadingGender: state.admin.isLoadingGender,
+        isLoadingPosition: state.admin.isLoadingPosition,
+        isLoadingRole: state.admin.isLoadingRole,
+
     };
 };
 
@@ -204,7 +280,11 @@ const mapDispatchToProps = dispatch => {
 
     return {
         fetchGenderStart: () => dispatch(actions.fetchGenderStart()),
+        fetchPositionStart: () => dispatch(actions.fetchPositionStart()),
+        fetchRoleStart: () => dispatch(actions.fetchRoleStart()),
         processLogout: () => dispatch(actions.processLogout()),
+
+
         // ChangeLanguageAppRedux: (language) => dispatch(ChangeLanguageApp(language))
     };
 };
