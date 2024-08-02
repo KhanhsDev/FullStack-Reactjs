@@ -1,5 +1,5 @@
 import actionTypes from './actionTypes';
-import { getAllCodeService } from '../../services/userService';
+import { getAllCodeService, createNewUserService } from '../../services/userService';
 import { dateFilter } from 'react-bootstrap-table2-filter';
 
 // export const fetchGenderStart = () => ({
@@ -21,7 +21,6 @@ export const fetchGenderStart = () => {
             }
         } catch (error) {
             dispatch(fetchGenderFail())
-            console.log("fetch gender fail :", error)
         }
     }
 }
@@ -53,7 +52,6 @@ export const fetchPositionStart = () => {
             }
         } catch (error) {
             dispatch((fetchPositionFail()))
-            console.log("fetch position fail :", error)
         }
     }
 }
@@ -84,7 +82,6 @@ export const fetchRoleStart = () => {
             }
         } catch (error) {
             dispatch(fetchRoleFail())
-            console.log("fetch role fail :", error)
         }
     }
 }
@@ -97,5 +94,31 @@ export const fetchRoleSuccess = (roleData) => ({
 
 export const fetchRoleFail = () => ({
     type: actionTypes.FETCH_ROLE_FAIL
+})
+
+
+export const createNewUser = (data) => {
+    return async (dispatch, getState) => {
+
+        try {
+
+            let res = await createNewUserService(data)
+            console.log("check data user from redux ", res)
+            if (res && res.data) {
+                dispatch(createUserSuccess())
+            } else {
+                dispatch(createUserFail())
+            }
+        } catch (error) {
+            dispatch(createUserFail())
+        }
+    }
+}
+
+export const createUserSuccess = () => ({
+    type: actionTypes.CREATE_USER_SUCCESS
+})
+export const createUserFail = () => ({
+    type: actionTypes.CREATE_USER_FAIL
 })
 
