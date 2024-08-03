@@ -73,7 +73,6 @@ class UserRedux extends Component {
 
     }
 
-
     // use genderArr state to load data gender
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (prevProps.gender !== this.props.gender) {

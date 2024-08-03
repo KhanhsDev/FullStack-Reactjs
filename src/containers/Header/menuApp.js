@@ -7,7 +7,11 @@ export const adminMenu = [
 
             },
             {
-                name: 'menu.admin.manage user redux', link: '/system/user-redux'
+                name: 'menu.admin.create user redux', link: '/system/user-redux'
+
+            },
+            {
+                name: 'menu.admin.display user redux', link: '/system/display-user-redux'
 
             },
             {

@@ -16,7 +16,8 @@ class ModalUser extends Component {
             address: '',
             phonenumber: '',
             roleId: '',
-            gender: ''
+            gender: '',
+            positionId: '',
         }
     }
 
@@ -38,7 +39,7 @@ class ModalUser extends Component {
 
     ValidateUserInfor = () => {
         let Isvalid = true
-        let arrInput = ['email', 'password', 'firstName', 'lastName', 'address', 'phonenumber', 'roleId', 'gender']
+        let arrInput = ['email', 'password', 'firstName', 'lastName', 'address', 'phonenumber', 'roleId', 'gender', 'positionId']
         for (let i = 0; i < arrInput.length; i++) {
             if (!this.state[arrInput[i]]) {
                 Isvalid = false
@@ -131,31 +132,45 @@ class ModalUser extends Component {
                                     />
                                 </div>
 
-                                <div class="mb-6 col-3">
+                                <div class="mb-6 col-2">
                                     <label for="InputpositionID" class="form-label">roleID </label>
                                     <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="roleId"
                                         onChange={(event) => this.handleOnchangeUserinfor(event, "roleId")}
                                         value={this.state.roleId}
                                     >
 
-                                        <option>Choose 1 answer </option>
-                                        <option value="1">Admin </option>
-                                        <option value="2">Doctor</option>
-                                        <option value="3">Patient</option>
+                                        <option>Choose 1 </option>
+                                        <option value="R1">Admin </option>
+                                        <option value="R2">Doctor</option>
+                                        <option value="R3">Patient</option>
                                     </select>
 
                                 </div>
-                                <div class="mb-6 col-3">
+                                <div class="mb-6 col-2">
                                     <label for="InputpositionID" class="form-label">Gender </label>
                                     <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="gender"
                                         onChange={(event) => this.handleOnchangeUserinfor(event, "gender")}
                                         value={this.state.gender}
                                     >
-                                        <option>Choose 1 answer </option>
-                                        <option value="1">Male </option>
-                                        <option value="0">Female</option>
+                                        <option>Choose 1</option>
+                                        <option value="M">Male </option>
+                                        <option value="F">Female</option>
+                                        <option value="O">Other</option>
                                     </select>
-
+                                </div>
+                                <div class="mb-6 col-2">
+                                    <label for="InputpositionID" class="form-label">Position </label>
+                                    <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="positionId"
+                                        onChange={(event) => this.handleOnchangeUserinfor(event, "positionId")}
+                                        value={this.state.positionId}
+                                    >
+                                        <option>Choose 1 </option>
+                                        <option value="P0">Physician </option>
+                                        <option value="P1">Master</option>
+                                        <option value="P3">Doctor</option>
+                                        <option value="P3">Associate Professor</option>
+                                        <option value="P4">Professor</option>
+                                    </select>
                                 </div>
                             </div>
 

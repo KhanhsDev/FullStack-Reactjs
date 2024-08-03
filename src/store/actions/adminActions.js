@@ -1,5 +1,5 @@
 import actionTypes from './actionTypes';
-import { getAllCodeService, createNewUserService } from '../../services/userService';
+import { getAllCodeService, createNewUserService, getAllUsers } from '../../services/userService';
 import { dateFilter } from 'react-bootstrap-table2-filter';
 
 // export const fetchGenderStart = () => ({
@@ -120,5 +120,28 @@ export const createUserSuccess = () => ({
 })
 export const createUserFail = () => ({
     type: actionTypes.CREATE_USER_FAIL
+})
+
+export const getAllUser = () => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await getAllUsers("ALL")
+            console.log("Get all users from node js", res)
+            if (res && res.users) {
+                dispatch(getAllUserSuccess(res.users))
+            } else {
+                dispatch(getAllUserFail())
+            }
+        } catch (error) {
+            dispatch(getAllUserFail())
+        }
+    }
+}
+export const getAllUserSuccess = (data) => ({
+    type: actionTypes.FETCH_USER_SUCCESS,
+    data: data
+})
+export const getAllUserFail = () => ({
+    type: actionTypes.FETCH_USER_FAIL
 })
 

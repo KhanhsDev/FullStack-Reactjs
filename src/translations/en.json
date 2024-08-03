@@ -49,13 +49,14 @@
             "manage doctor": "Manage doctor",
             "manage admin": "Manage administrator",
             "manage user react": "CRUD react",
-            "manage user redux": "CRUD redux",
+            "create user redux": "CRUD redux",
             "clinic": "Clinic",
             "manage clinic": "Manage Clinic",
             "speciallity": "Speciality",
             "manage speciallity": "Manage Speciality",
             "handbook": "Handbook",
-            "manage handbook": "Manage Handbook"
+            "manage handbook": "Manage Handbook",
+            "display user redux": "display user"
         }
     },
     "manage-user": {

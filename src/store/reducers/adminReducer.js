@@ -6,9 +6,11 @@ const initialState = {
     isLoadingGender: false,
     isLoadingPosition: false,
     isLoadingRole: false,
+    isLoadingUsers: false,
     genders: [],
     roles: [],
-    positions: []
+    positions: [],
+    AllUser: [],
 }
 
 const adminReducer = (state = initialState, action) => {
@@ -72,6 +74,21 @@ const adminReducer = (state = initialState, action) => {
             return {
                 ...state,
 
+            }
+
+        // fetch all users 
+        case actionTypes.FETCH_USER_SUCCESS:
+            state.isLoadingUsers = false;
+            state.AllUser = action.data
+            console.log("check data all user from admin actions :", action)
+            return {
+                ...state,
+            }
+        case actionTypes.FETCH_ROLE_FAIL:
+            state.isLoadingUsers = false;
+            state.AllUser = []
+            return {
+                ...state,
             }
 
         default:

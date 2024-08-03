@@ -49,13 +49,15 @@
             "manage doctor": "Quản lý bác sĩ",
             "manage admin": "Quản lý admin",
             "manage user react": "CRUD react",
-            "manage user redux": "CRUD redux",
+            "create user redux": "CRUD redux",
             "clinic": "phòng khám",
             "manage clinic": "Quản lý phòng khám",
             "speciallity": "Chuyên khoa",
             "manage speciallity": "Quản lý chuyên khoa",
             "handbook": "Bài đăng",
-            "manage handbook": "Quản lý bài đăng"
+            "manage handbook": "Quản lý bài đăng",
+            "display user redux": "hiên thị người dùng"
+
         }
     },
     "manage-user": {
