@@ -1,6 +1,4 @@
-import { act } from 'react';
 import actionTypes from '../actions/actionTypes';
-import { faL, faLeaf } from '@fortawesome/free-solid-svg-icons';
 
 const initialState = {
     isLoadingGender: false,
@@ -80,7 +78,6 @@ const adminReducer = (state = initialState, action) => {
         case actionTypes.FETCH_USER_SUCCESS:
             state.isLoadingUsers = false;
             state.AllUser = action.data
-            console.log("check data all user from admin actions :", action)
             return {
                 ...state,
             }

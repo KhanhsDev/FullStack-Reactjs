@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Table, Button } from 'react-bootstrap';
-import { getAllUsers, createNewUserService } from '../../services/userService';
+import { getAllUsers, createNewUserService, deleteUserService, editUserService } from '../../services/userService';
 import ModalUser from './ModalUser';
+import { emitter } from '../../utils/emitter';
+import ModalEditUser from './ModalEditUser';
 class UserManage extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
             AllUsers: [],
-            isOpenModalCreateUser: false
-
+            isOpenModalCreateUser: false,
+            isOpenModalEditUser: false,
+            userEdit: {}
         }
     }
 
@@ -26,16 +29,20 @@ class UserManage extends Component {
                 AllUsers: response.users
             })
         }
-        console.log("Get all users from node.js", response)
     }
     handleCreateNewUser = (user) => {
         this.setState({
             isOpenModalCreateUser: true
         })
     }
-    isToggle = () => {
+    isToggleCreateUser = () => {
         this.setState({
             isOpenModalCreateUser: !this.state.isOpenModalCreateUser
+        })
+    }
+    isOpenEditUser = () => {
+        this.setState({
+            isOpenModalEditUser: !this.state.isOpenModalEditUser
         })
     }
     createNewUser = async (data) => {
@@ -45,17 +52,51 @@ class UserManage extends Component {
                 alert(response.errorMessage)
             }
             else {
-                this.getAllUsersFromReact()
+                await this.getAllUsersFromReact()
                 this.setState({
                     isOpenModalCreateUser: false
                 })
+                emitter.emit('EVENT_CLEAR_MODAL_DATA')
             }
             console.log("check responce create new user ", response)
         } catch (error) {
             console.log(error)
         }
-
         console.log("check data from modal create new user :", data)
+    }
+
+    EditUser = async (user) => {
+        try {
+            let res = await editUserService(user)
+            if (res && res.ErrorCode === 0) {
+                this.setState({
+                    isOpenModalEditUser: false
+                })
+                await this.getAllUsersFromReact()
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    handleEditUser = (user) => {
+        console.log("check edit user :", user)
+        this.setState({
+            isOpenModalEditUser: true,
+            userEdit: user
+        })
+    }
+    handleDeleteUser = async (user) => {
+        try {
+            let res = await deleteUserService(user.id);
+            console.log("check user infor delete", res)
+            if (res && res.ErrorCode === 0) {
+                await this.getAllUsersFromReact()
+            } else {
+                alert(res.errorMessage)
+            }
+        } catch (error) {
+            console.log(error)
+        }
     }
     render() {
         let AllUsers = this.state.AllUsers
@@ -64,9 +105,18 @@ class UserManage extends Component {
                 <div>
                     <ModalUser
                         isOpen={this.state.isOpenModalCreateUser}
-                        isToggle={this.isToggle}
+                        isToggleCreateUser={this.isToggleCreateUser}
                         createNewUser={this.createNewUser}
                     />
+                    {
+                        this.state.isOpenModalEditUser &&
+                        <ModalEditUser
+                            isOpen={this.state.isOpenModalEditUser}
+                            isOpenEditUser={this.isOpenEditUser}
+                            userEdit={this.state.userEdit}
+                            editUser={this.EditUser}
+                        />
+                    }
                 </div>
                 <div className='title text-center mt-3 bold blue '>
                     Manage User
@@ -112,8 +162,10 @@ class UserManage extends Component {
                                         <td>
 
                                             <a type="button" class="btn btn-warning" style={{ width: 60 }}
+                                                onClick={() => this.handleEditUser(item)}
                                             >Edit</a>{'  '}
                                             <a type="button" class="btn btn-danger" style={{ width: 60 }}
+                                                onClick={() => this.handleDeleteUser(item)}
                                             >Delete</a>{' '}
                                         </td>
                                     </tr>

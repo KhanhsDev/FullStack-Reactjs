@@ -6,7 +6,11 @@ import * as actions from '../../../store/actions'
 import './UserRedux.scss'
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
-import { faL } from '@fortawesome/free-solid-svg-icons';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+import ModalEditUser from './ModalEditUser';
+import DisplayUserRedux from './DisplayUserRedux';
 
 class UserRedux extends Component {
 
@@ -31,6 +35,7 @@ class UserRedux extends Component {
             position: '',
             image: '',
 
+            isOpenModalEditUser: false
         }
     }
 
@@ -90,6 +95,23 @@ class UserRedux extends Component {
                 roleIDArr: this.props.role
             })
         }
+
+        if (prevProps.AllUser !== this.props.AllUser) {
+            this.setState({
+
+                email: '',
+                password: '',
+                firstName: '',
+                lastName: '',
+                address: '',
+                phonenumber: '',
+                gender: '',
+                role: '',
+                position: '',
+                image: '',
+
+            })
+        }
     }
 
     handleOnChangeFile = (event) => {
@@ -121,7 +143,7 @@ class UserRedux extends Component {
     }
     validateInput = () => {
         let isValid = true
-        let arrCheck = ['email', 'password', 'firstName', 'lastName', 'address', 'gender', 'phonenumber', 'role', 'position']
+        let arrCheck = ['email', 'password', 'firstName', 'lastName', 'address', 'gender', 'phonenumber', 'role']
         for (let i = 0; i < arrCheck.length; i++) {
             if (!this.state[arrCheck[i]]) {
                 isValid = false
@@ -146,11 +168,23 @@ class UserRedux extends Component {
             address: this.state.address,
             phonenumber: this.state.phonenumber,
             roleId: this.state.role,
-            position: this.state.position,
+            positionId: this.state.position,
             gender: this.state.gender,
 
-        })
+        });
+        toast.success('🦄 Create new users successfully ...', {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            // transition: "Bounce",
+        });
     }
+
     render() {
 
         // use genderArr state
@@ -241,6 +275,7 @@ class UserRedux extends Component {
                             </label>
                             <select id="inputGender" className="form-select"
                                 onChange={(event) => { this.handleOnchangeInput(event, 'gender') }}
+                                value={gender}
                             >
                                 <option selected>Choose a option</option>
                                 {genders && genders.length > 0 && genders.map((item, index) => {
@@ -259,7 +294,9 @@ class UserRedux extends Component {
                                 <FormattedMessage id='manage-user.roleID' />
                             </label>
                             <select id="inputRole" className="form-select"
-                                onChange={(event) => { this.handleOnchangeInput(event, 'role') }}>
+                                onChange={(event) => { this.handleOnchangeInput(event, 'role') }}
+                                value={role}
+                            >
                                 <option selected>Choose a option</option>
                                 {roleID && roleID.length > 0 && roleID.map((item, index) => {
                                     return (
@@ -277,7 +314,9 @@ class UserRedux extends Component {
                                 <FormattedMessage id='manage-user.position' />
                             </label>
                             <select id="inputPosition" className="form-select"
-                                onChange={(event) => { this.handleOnchangeInput(event, 'position') }}>
+                                onChange={(event) => { this.handleOnchangeInput(event, 'position') }}
+                                value={position}
+                            >
                                 <option selected>Choose a option</option>
                                 {positions && positions.length > 0 && positions.map((item, index) => {
                                     return (
@@ -328,7 +367,7 @@ class UserRedux extends Component {
                         </button>
                     </div>
                 </div>
-
+                <DisplayUserRedux />
             </>
         )
     }
@@ -341,6 +380,7 @@ const mapStateToProps = state => {
         gender: state.admin.genders,
         positions: state.admin.positions,
         role: state.admin.roles,
+        AllUser: state.admin.AllUser,
 
         isLoadingGender: state.admin.isLoadingGender,
         isLoadingPosition: state.admin.isLoadingPosition,
@@ -356,7 +396,8 @@ const mapDispatchToProps = dispatch => {
         fetchPositionStart: () => dispatch(actions.fetchPositionStart()),
         fetchRoleStart: () => dispatch(actions.fetchRoleStart()),
         processLogout: () => dispatch(actions.processLogout()),
-        createNewUser: (data) => dispatch(actions.createNewUser(data))
+        createNewUser: (data) => dispatch(actions.createNewUser(data)),
+        getAllUser: (data) => dispatch(actions.getAllUser(data)),
 
 
         // ChangeLanguageAppRedux: (language) => dispatch(ChangeLanguageApp(language))
