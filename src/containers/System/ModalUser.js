@@ -47,6 +47,7 @@ class ModalUser extends Component {
     handleOnchangeUserinfor = (event, id) => {
         let copyState = { ...this.state }
         copyState[id] = event.target.value
+        console.log(copyState[id])
         this.setState({
             ...copyState,
 

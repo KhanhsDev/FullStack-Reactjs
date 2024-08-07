@@ -57,12 +57,12 @@
             "handbook": "Bài đăng",
             "manage handbook": "Quản lý bài đăng",
             "display user redux": "hiên thị người dùng"
-
         }
     },
     "manage-user": {
         "choose a option": "Chọn một tùy chọn",
         "add": "thêm mới người dùng",
+        "display": "hiển thị người dùng",
         "email": "Email",
         "password": "Mật khẩu",
         "first name": "Tên",

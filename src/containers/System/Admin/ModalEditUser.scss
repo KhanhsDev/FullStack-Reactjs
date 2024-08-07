@@ -1,8 +1,7 @@
-
-.uploadImage-container {
+.uploadImage-container-update {
     display: flex;
 
-    .inputUploadImage {
+    .inputUploadImageupdate {
         border-radius: 3px;
         cursor: pointer;
         background-color: #ddd;
@@ -15,8 +14,7 @@
         }
     }
 
-    .preview-image {
-        z-index: 10000;
+    .preview-image-update {
         border-radius: 3px;
         margin-left: 3px;
         border: 1px solid red;

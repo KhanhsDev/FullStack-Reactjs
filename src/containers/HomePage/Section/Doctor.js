@@ -81,7 +81,6 @@ class Doctor extends Component {
                                         6
                                     </div>
                                 </div>
-
                             </Slider>
                         </div>
                     </div>
@@ -101,6 +100,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
+
+
     };
 };
 

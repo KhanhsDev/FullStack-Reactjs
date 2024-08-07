@@ -4,6 +4,7 @@ import { Table, Button } from 'react-bootstrap';
 import * as actions from '../../../store/actions'
 
 import { ToastContainer, toast } from 'react-toastify';
+import { FormattedMessage } from 'react-intl';
 
 import 'react-toastify/dist/ReactToastify.css';
 // import './DisplayUserRedux.scss'
@@ -22,7 +23,6 @@ class DisplayUserRedux extends Component {
             userEdit: {}
         }
     }
-
 
     async componentDidMount() {
         this.props.getAllUser()
@@ -83,7 +83,9 @@ class DisplayUserRedux extends Component {
         let AllUsers = this.state.AllUsers
         return (
             <>
-
+                <div className='title mt-5'>
+                    <FormattedMessage id='manage-user.display' />
+                </div>
                 {
                     this.state.isOpenModalEditUser &&
                     <ModalEditUser
@@ -91,9 +93,10 @@ class DisplayUserRedux extends Component {
                         isOpenEditUser={this.isOpenEditUser}
                         userEdit={this.state.userEdit}
                         editUser={this.props.editUser}
+                        className='z-1'
                     />
                 }
-                <div className='mt-5'>
+                <div className='mt-5 container' style={{ marginBottom: 50 }}>
                     <Table striped bordered hover >
                         <thead>
                             <tr>
@@ -122,7 +125,7 @@ class DisplayUserRedux extends Component {
                                         <td>{item.roleId}</td>
                                         <td>{item.positionId}</td>
                                         <td>{item.phonenumber}</td>
-                                        <td>
+                                        <td style={{ width: 150 }}>
                                             <a type="button" class="btn btn-warning" style={{ width: 60 }}
                                                 onClick={() => this.handleEditUser(item)}
                                             >Edit</a>{'  '}
@@ -135,7 +138,7 @@ class DisplayUserRedux extends Component {
                             })}
                         </tbody>
                     </Table>
-                </div>
+                </div >
             </>
         )
     }

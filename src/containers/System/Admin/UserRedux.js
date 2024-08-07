@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
-import { languages } from '../../../utils/constant';
+import { languages, CommonUtils } from '../../../utils';
 import * as actions from '../../../store/actions'
 import './UserRedux.scss'
 import Lightbox from 'react-image-lightbox';
@@ -109,20 +109,21 @@ class UserRedux extends Component {
                 role: '',
                 position: '',
                 image: '',
-
+                // previewImageUrl: '',
             })
         }
     }
 
-    handleOnChangeFile = (event) => {
+    handleOnChangeFile = async (event) => {
         let data = event.target.files
         let file = data[0]
         if (file) {
 
+            let base64 = await CommonUtils.getBase64(file)
             let ObjectUrl = URL.createObjectURL(file)
             this.setState({
                 previewImageUrl: ObjectUrl,
-                image: file
+                image: base64
             })
         }
     }
@@ -170,6 +171,7 @@ class UserRedux extends Component {
             roleId: this.state.role,
             positionId: this.state.position,
             gender: this.state.gender,
+            image: this.state.image
 
         });
         toast.success('🦄 Create new users successfully ...', {
@@ -340,7 +342,7 @@ class UserRedux extends Component {
                                 <label className='inputUploadImage' htmlFor='UpLoadImage'>Tai anh
                                     <i class="fas fa-upload"></i>
                                 </label>
-                                <div className='preview-iamge'
+                                <div className='preview-image'
                                     style={{
                                         backgroundImage: `url(${this.state.previewImageUrl})`
                                     }}

@@ -62,6 +62,7 @@
     "manage-user": {
         "choose a option": "Choose a option",
         "add": "Add New User",
+        "display": "display all users",
         "email": "Email",
         "password": "Password",
         "first name": "First name",

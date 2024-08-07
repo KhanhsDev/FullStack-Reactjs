@@ -4,6 +4,11 @@ import { connect } from 'react-redux';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import _ from 'lodash'
 import { ToastContainer, toast } from 'react-toastify';
+import Lightbox from 'react-image-lightbox';
+import { CommonUtils } from '../../../utils';
+import { FormattedMessage } from 'react-intl';
+// import './ ModalUpdateUser.scss'
+import './ModalEditUser.scss'
 
 class ModalEditUser extends Component {
 
@@ -20,6 +25,9 @@ class ModalEditUser extends Component {
             roleId: '',
             gender: '',
             positionId: '',
+            image: '',
+            previewImageUrlUpdate: '',
+            isPreviewImageUpdate: false,
         }
     }
 
@@ -28,6 +36,12 @@ class ModalEditUser extends Component {
 
         // use lodash to check user is empty ( _.isEmpty(user) = false => !_.isEmpty(user) = true)
         if (user && !_.isEmpty(user)) {
+            let imageBase64 = '';
+            if (user.image) {
+                const imageBuffer = Buffer.from(JSON.stringify(user.image))
+                // imageBase64 = imageBuffer.toString('base64')
+                imageBase64 = new Buffer(user.image, 'base64').toString('binary')
+            }
             this.setState({
                 id: user.id,
                 email: user.email,
@@ -38,6 +52,10 @@ class ModalEditUser extends Component {
                 roleId: user.roleId,
                 gender: user.gender,
                 positionId: user.positionId,
+                // image: imageBase64,
+                previewImageUrlUpdate: imageBase64
+            }, () => {
+                console.log("check data preview image:", this.state)
             })
         }
     }
@@ -45,7 +63,26 @@ class ModalEditUser extends Component {
     toggle = () => {
         this.props.isOpenEditUser()
     }
-
+    handleOnChangeFileUpdate = async (event) => {
+        let data = event.target.files
+        let file = data[0]
+        if (file) {
+            let base64Update = await CommonUtils.getBase64(file)
+            let ObjectUrlUpdate = URL.createObjectURL(file)
+            this.setState({
+                previewImageUrlUpdate: ObjectUrlUpdate,
+                image: base64Update
+            })
+        }
+    }
+    handleOnclickPreviewImageUpdate = () => {
+        if (!this.state.previewImageUrlUpdate) {
+            return
+        }
+        this.setState({
+            isPreviewImageUpdate: true
+        })
+    }
     handleOnchangeUserinfor = (event, id) => {
         let copyState = { ...this.state }
         copyState[id] = event.target.value
@@ -87,6 +124,8 @@ class ModalEditUser extends Component {
         });
     }
     render() {
+        let isPreviewImageUpdate = this.state.isPreviewImageUpdate;
+
         return (
             <>
                 <Modal
@@ -94,7 +133,7 @@ class ModalEditUser extends Component {
                     toggle={() => { this.toggle() }}
                     size='lg'
                     centered
-                    className='modal-user-container'
+                    className='modal-user-container-update z-3'
                 >
                     <ModalHeader>Edit User</ModalHeader>
                     <ModalBody>
@@ -182,6 +221,38 @@ class ModalEditUser extends Component {
                                         <option value="P3">Associate Professor</option>
                                         <option value="P4">Professor</option>
                                     </select>
+                                </div>
+                            </div>
+                            <div className="row col-12 mt-3 justify-content-center">
+                                <label htmlFor="inputImage" className="form-label">
+                                    <FormattedMessage id='manage-user.image' />
+
+                                </label>
+                                <div className='uploadImage-container-update'>
+                                    <input id='UpLoadImageupdate' type='file' hidden
+                                        onChange={(event) => this.handleOnChangeFileUpdate(event)}
+                                    />
+                                    <label className='inputUploadImageupdate' htmlFor='UpLoadImageupdate'>Tai anh
+                                        <i class="fas fa-upload"></i>
+                                    </label>
+                                    <div className='preview-image-update'
+                                        style={{
+                                            backgroundImage: `url(${this.state.previewImageUrlUpdate})`
+                                        }}
+                                        onClick={() => this.handleOnclickPreviewImageUpdate()}
+                                    >
+                                        {isPreviewImageUpdate && (
+                                            <>
+
+                                                <Lightbox
+                                                    mainSrc={this.state.previewImageUrlUpdate}
+                                                    onCloseRequest={() => this.setState({ isPreviewImageUpdate: false })}
+                                                />
+                                            </>
+
+                                        )}
+                                    </div>
+
                                 </div>
                             </div>
 
