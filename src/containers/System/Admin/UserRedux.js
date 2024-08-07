@@ -9,7 +9,6 @@ import 'react-image-lightbox/style.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import ModalEditUser from './ModalEditUser';
 import DisplayUserRedux from './DisplayUserRedux';
 
 class UserRedux extends Component {
@@ -282,8 +281,8 @@ class UserRedux extends Component {
                                 <option selected>Choose a option</option>
                                 {genders && genders.length > 0 && genders.map((item, index) => {
                                     return (
-                                        <option key={index} value={item.key}>
-                                            {language === languages.VI ? item.valueVi : item.valueEn}
+                                        <option key={index} value={item.keyMap}>
+                                            {language === languages.VI ? item.value_vi : item.value_en}
                                         </option>
                                     )
                                 })
@@ -302,8 +301,8 @@ class UserRedux extends Component {
                                 <option selected>Choose a option</option>
                                 {roleID && roleID.length > 0 && roleID.map((item, index) => {
                                     return (
-                                        <option key={index} value={item.key}>
-                                            {language === languages.VI ? item.valueVi : item.valueEn}
+                                        <option key={index} value={item.keyMap}>
+                                            {language === languages.VI ? item.value_vi : item.value_en}
                                         </option>
                                     )
                                 })
@@ -322,8 +321,8 @@ class UserRedux extends Component {
                                 <option selected>Choose a option</option>
                                 {positions && positions.length > 0 && positions.map((item, index) => {
                                     return (
-                                        <option key={index} value={item.key}>
-                                            {language === languages.VI ? item.valueVi : item.valueEn}
+                                        <option key={index} value={item.keyMap}>
+                                            {language === languages.VI ? item.value_vi : item.value_en}
                                         </option>
                                     )
                                 })
@@ -399,7 +398,7 @@ const mapDispatchToProps = dispatch => {
         fetchRoleStart: () => dispatch(actions.fetchRoleStart()),
         processLogout: () => dispatch(actions.processLogout()),
         createNewUser: (data) => dispatch(actions.createNewUser(data)),
-        getAllUser: (data) => dispatch(actions.getAllUser(data)),
+        getAllUser: () => dispatch(actions.getAllUser()),
 
 
         // ChangeLanguageAppRedux: (language) => dispatch(ChangeLanguageApp(language))

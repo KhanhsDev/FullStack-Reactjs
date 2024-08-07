@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import * as actions from '../../../store/actions'
 import { FormattedMessage } from 'react-intl';
+import { languages, CommonUtils } from '../../../utils';
 
 // import Specialityimage from '../../../assets/session/co-xuong-khop.png'
 // import Doctor from '../../../assets/session/session.jpg'
@@ -15,10 +16,27 @@ import "slick-carousel/slick/slick-theme.css";
 
 
 class Doctor extends Component {
-
-
+    constructor(props) {
+        super(props);
+        this.state = {
+            doctorArr: []
+        }
+    }
+    async componentDidMount() {
+        // console.log("check props from actions ", this.props.fetchDoctor())
+        this.props.fetchDoctor()
+    }
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.doctor !== this.props.doctor) {
+            this.setState({
+                doctorArr: this.props.doctor
+            })
+        }
+    }
     render() {
-
+        let doctorArr = this.state.doctorArr
+        let language = this.props.language
+        console.log(doctorArr.length)
         return (
             <>
                 <div className='session-container'>
@@ -33,54 +51,29 @@ class Doctor extends Component {
                         </div>
                         <div className='session-body'>
                             <Slider {...this.props.settings}>
-                                <div className='customize-session'>
-                                    <div className='background-image background-image-doctor'></div>
-                                    <div className='session-des'>
-                                        <FormattedMessage id="session.musculoskeletal joints" />
-                                        1
-                                    </div>
 
-                                </div>
+                                {doctorArr && doctorArr.length > 0
+                                    && doctorArr.map((item, index) => {
+                                        let imageBase64 = ''
+                                        if (item.image) {
+                                            imageBase64 = new Buffer(item.image, 'base64').toString('binary')
+                                        }
+                                        let nameVi = `${item.positionData.value_vi}, ${item.lastName} ${item.firstName}`
+                                        let nameEn = `${item.positionData.value_en}, ${item.firstName} ${item.lastName}`
 
-                                <div className='customize-session'>
-                                    <div className='background-image background-image-doctor'></div>
-                                    <div className='session-des'>
-                                        <FormattedMessage id="session.musculoskeletal joints" />
-                                        2
-                                    </div>
-                                </div>
-
-                                <div className='customize-session'>
-                                    <div className='background-image background-image-doctor'></div>
-                                    <div className='session-des'>
-                                        <FormattedMessage id="session.musculoskeletal joints" />
-                                        3
-                                    </div>
-                                </div>
-
-                                <div className='customize-session'>
-                                    <div className='background-image background-image-doctor'></div>
-                                    <div className='session-des'>
-                                        <FormattedMessage id="session.musculoskeletal joints" />
-                                        4
-                                    </div>
-                                </div>
-
-                                <div className='customize-session'>
-                                    <div className='background-image background-image-doctor'></div>
-                                    <div className='session-des'>
-                                        <FormattedMessage id="session.musculoskeletal joints" />
-                                        5
-                                    </div>
-                                </div>
-
-                                <div className='customize-session'>
-                                    <div className='background-image background-image-doctor'></div>
-                                    <div className='session-des'>
-                                        <FormattedMessage id="session.musculoskeletal joints" />
-                                        6
-                                    </div>
-                                </div>
+                                        return (
+                                            <div className='customize-session' key={index}>
+                                                <div className='background-image background-image-doctor'
+                                                    style={{
+                                                        backgroundImage: `url(${imageBase64})`
+                                                    }}></div>
+                                                <div className='session-des'>
+                                                    <div>{language === languages.VI ? nameVi : nameEn}</div>
+                                                </div>
+                                            </div>
+                                        )
+                                    })
+                                }
                             </Slider>
                         </div>
                     </div>
@@ -94,14 +87,15 @@ class Doctor extends Component {
 const mapStateToProps = state => {
     return {
         isLoggedIn: state.user.isLoggedIn,
-        language: state.app.language
+        language: state.app.language,
+        doctor: state.admin.Doctor,
+        isLoadingDoctor: state.admin.isLoadingDoctor,
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-
-
+        fetchDoctor: () => dispatch(actions.fetchDoctor()),
     };
 };
 

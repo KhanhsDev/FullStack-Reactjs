@@ -5,10 +5,12 @@ const initialState = {
     isLoadingPosition: false,
     isLoadingRole: false,
     isLoadingUsers: false,
+    isLoadingDoctor: false,
     genders: [],
     roles: [],
     positions: [],
     AllUser: [],
+    Doctor: [],
 }
 
 const adminReducer = (state = initialState, action) => {
@@ -81,13 +83,27 @@ const adminReducer = (state = initialState, action) => {
             return {
                 ...state,
             }
-        case actionTypes.FETCH_ROLE_FAIL:
+        case actionTypes.EDIT_USER_FAIL:
             state.isLoadingUsers = false;
             state.AllUser = []
             return {
                 ...state,
             }
 
+        // fetch doctor
+        case actionTypes.FETCH_DOCTOR_SUCCESS:
+            state.isLoadingDoctor = false;
+            state.Doctor = action.data.data
+            console.log("check state doctor ", state.Doctor)
+            return {
+                ...state,
+            }
+        case actionTypes.FETCH_DOCTOR_FAIL:
+            state.isLoadingDoctor = false;
+            state.Doctor = []
+            return {
+                ...state,
+            }
         default:
             return state;
     }

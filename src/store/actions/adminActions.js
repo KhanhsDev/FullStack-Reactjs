@@ -1,7 +1,8 @@
 import actionTypes from './actionTypes';
-import { getAllCodeService, createNewUserService, getAllUsers, deleteUserService, editUserService } from '../../services/userService';
+import { getAllCodeService, createNewUserService, getAllUsers, deleteUserService, editUserService, getAllDoctorService } from '../../services/userService';
 import { dateFilter } from 'react-bootstrap-table2-filter';
 import { ToastContainer, toast } from 'react-toastify';
+import { legacy_createStore } from 'redux';
 
 // export const fetchGenderStart = () => ({
 //     type: actionTypes.FETCH_GENDER_START
@@ -76,6 +77,7 @@ export const fetchRoleStart = () => {
                 type: actionTypes.FETCH_ROLE_START
             })
             let res = await getAllCodeService("ROLE")
+            console.log("check res role ", res)
             if (res && res.data) {
                 dispatch(fetchRoleSuccess(res.data))
             } else {
@@ -194,3 +196,42 @@ export const editUserSuccess = () => ({
 export const editUserFail = () => ({
     type: actionTypes.EDIT_USER_FAIL
 })
+
+// export const getAllUser = () => {
+//     return async (dispatch, getState) => {
+//         try {
+//             let res = await getAllUsers("ALL")
+//             if (res && res.users) {
+//                 dispatch(getAllUserSuccess(res.users.reverse()))
+//             } else {
+//                 dispatch(getAllUserFail())
+//             }
+//         } catch (error) {
+//             dispatch(getAllUserFail())
+//         }
+//     }
+// }
+export const fetchDoctor = () => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await getAllDoctorService("R2")
+            console.log("check rs ", res)
+            if (res && res.ErrorCode === 0) {
+                dispatch(fetchDoctorSuccess(res.data))
+            } else {
+                dispatch(fetchDoctorFail())
+            }
+        } catch (error) {
+            dispatch(fetchDoctorFail())
+
+        }
+    }
+}
+export const fetchDoctorSuccess = (doctorData) => ({
+    type: actionTypes.FETCH_DOCTOR_SUCCESS,
+    data: doctorData
+})
+export const fetchDoctorFail = () => ({
+    type: actionTypes.FETCH_DOCTOR_FAIL
+})
+

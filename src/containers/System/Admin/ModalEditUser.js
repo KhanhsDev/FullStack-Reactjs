@@ -38,8 +38,6 @@ class ModalEditUser extends Component {
         if (user && !_.isEmpty(user)) {
             let imageBase64 = '';
             if (user.image) {
-                const imageBuffer = Buffer.from(JSON.stringify(user.image))
-                // imageBase64 = imageBuffer.toString('base64')
                 imageBase64 = new Buffer(user.image, 'base64').toString('binary')
             }
             this.setState({
