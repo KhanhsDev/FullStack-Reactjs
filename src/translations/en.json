@@ -25,8 +25,12 @@
             "Read more": "Read more",
             "musculoskeletal joints": "musculoskeletal joints"
         },
+        "doctor": {
+            "outstanding doctor": "outstanding doctor",
+            "Read more": "Read more"
+        },
         "Medical facility": {
-            "Read more": "Xem thêm",
+            "Read more": "Read more",
             "Medical Facility": "Medical Facility",
             "VIET DUC UNIVERSITY HOSPITAL": "VIET DUC UNIVERSITY HOSPITAL "
         }

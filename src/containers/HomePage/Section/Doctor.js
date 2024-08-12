@@ -37,20 +37,28 @@ class Doctor extends Component {
         let doctorArr = this.state.doctorArr
         let language = this.props.language
         console.log(doctorArr.length)
+        let settings = {
+            dots: false,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 4,
+            slidesToScroll: 4,
+            // autoplay: true,
+        }
         return (
             <>
                 <div className='session-container'>
                     <div className='session-content'>
                         <div className='session-header'>
                             <span className='session-name'>
-                                <FormattedMessage id="session.session" />
+                                <FormattedMessage id="Session.doctor.outstanding doctor" />
                             </span>
                             <button className='btn-session-readmore'>
-                                <FormattedMessage id="session.Read more" />
+                                <FormattedMessage id="Session.doctor.Read more" />
                             </button>
                         </div>
                         <div className='session-body'>
-                            <Slider {...this.props.settings}>
+                            <Slider {...settings}>
 
                                 {doctorArr && doctorArr.length > 0
                                     && doctorArr.map((item, index) => {

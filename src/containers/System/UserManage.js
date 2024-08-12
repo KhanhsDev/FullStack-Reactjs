@@ -5,6 +5,9 @@ import { getAllUsers, createNewUserService, deleteUserService, editUserService }
 import ModalUser from './ModalUser';
 import { emitter } from '../../utils/emitter';
 import ModalEditUser from './ModalEditUser';
+
+
+
 class UserManage extends Component {
 
     constructor(props) {
@@ -174,7 +177,6 @@ class UserManage extends Component {
                         </tbody>
                     </Table>
                 </div>
-
             </>
         );
     }
