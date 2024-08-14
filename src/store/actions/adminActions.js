@@ -1,5 +1,9 @@
 import actionTypes from './actionTypes';
-import { getAllCodeService, createNewUserService, getAllUsers, deleteUserService, editUserService, getAllDoctorService } from '../../services/userService';
+import {
+    getAllCodeService, createNewUserService,
+    getAllUsers, deleteUserService, editUserService,
+    getAllDoctorService, saveDetailDoctorServices,
+} from '../../services/userService';
 import { dateFilter } from 'react-bootstrap-table2-filter';
 import { ToastContainer, toast } from 'react-toastify';
 import { legacy_createStore } from 'redux';
@@ -197,20 +201,6 @@ export const editUserFail = () => ({
     type: actionTypes.EDIT_USER_FAIL
 })
 
-// export const getAllUser = () => {
-//     return async (dispatch, getState) => {
-//         try {
-//             let res = await getAllUsers("ALL")
-//             if (res && res.users) {
-//                 dispatch(getAllUserSuccess(res.users.reverse()))
-//             } else {
-//                 dispatch(getAllUserFail())
-//             }
-//         } catch (error) {
-//             dispatch(getAllUserFail())
-//         }
-//     }
-// }
 export const fetchDoctor = () => {
     return async (dispatch, getState) => {
         try {
@@ -234,4 +224,26 @@ export const fetchDoctorSuccess = (doctorData) => ({
 export const fetchDoctorFail = () => ({
     type: actionTypes.FETCH_DOCTOR_FAIL
 })
+export const saveInfoDoctor = (data) => {
+    return async (dispatch, getState) => {
 
+        try {
+
+            let res = await saveDetailDoctorServices(data)
+            console.log("check data user from redux ", res)
+            if (res && res.data) {
+                dispatch({
+                    type: actionTypes.SAVE_INFOR_DOCTOR_SUCCESS
+                })
+
+            } dispatch({
+                type: actionTypes.SAVE_INFOR_DOCTOR_FAIL
+            })
+            dispatch(getAllUser())
+        } catch (error) {
+            dispatch({
+                type: actionTypes.SAVE_INFOR_DOCTOR_FAIL
+            })
+        }
+    }
+}

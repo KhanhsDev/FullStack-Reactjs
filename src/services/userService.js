@@ -25,9 +25,13 @@ const editUserService = (data) => {
 const getAllDoctorService = (data) => {
     return axios.get(`/api/getAllDoctor?roleId=${data}`)
 }
+const saveDetailDoctorServices = (data) => {
+    return axios.post(`/api/save-infor-doctors`, data)
+
+}
 export {
     handleLogin, getAllUsers,
     createNewUserService, getAllCodeService,
     deleteUserService, editUserService,
-    getAllDoctorService
+    getAllDoctorService, saveDetailDoctorServices
 }
