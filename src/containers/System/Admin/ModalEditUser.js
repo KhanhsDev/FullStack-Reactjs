@@ -52,8 +52,6 @@ class ModalEditUser extends Component {
                 positionId: user.positionId,
                 // image: imageBase64,
                 previewImageUrlUpdate: imageBase64
-            }, () => {
-                console.log("check data preview image:", this.state)
             })
         }
     }

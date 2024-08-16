@@ -66,7 +66,6 @@ class ManageDoctor extends Component {
             description: this.state.description,
             doctorId: this.state.selectedDoctor.value
         })
-        console.log("check state ", this.state)
     }
     handleChange = (selectedDoctor) => {
         this.setState({ selectedDoctor });

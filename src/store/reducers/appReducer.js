@@ -32,7 +32,6 @@ const appReducer = (state = initialState, action) => {
                 }
             }
         case actionTypes.CHANGE_LANGUAGE_APP:
-            console.log("check data action props", action)
             return {
                 language: action.language
             }

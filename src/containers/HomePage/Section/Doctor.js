@@ -4,8 +4,7 @@ import * as actions from '../../../store/actions'
 import { FormattedMessage } from 'react-intl';
 import { languages, CommonUtils } from '../../../utils';
 
-// import Specialityimage from '../../../assets/session/co-xuong-khop.png'
-// import Doctor from '../../../assets/session/session.jpg'
+import { withRouter } from 'react-router';
 
 import './Session.scss'
 
@@ -23,7 +22,6 @@ class Doctor extends Component {
         }
     }
     async componentDidMount() {
-        // console.log("check props from actions ", this.props.fetchDoctor())
         this.props.fetchDoctor()
     }
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -33,10 +31,13 @@ class Doctor extends Component {
             })
         }
     }
+    handleViewDetailDoctor = (doctor) => {
+        console.log("View information doctor ", doctor)
+        this.props.history.push(`/detail-doctor/${doctor.id}`)
+    }
     render() {
         let doctorArr = this.state.doctorArr
         let language = this.props.language
-        console.log(doctorArr.length)
         let settings = {
             dots: false,
             infinite: true,
@@ -70,11 +71,13 @@ class Doctor extends Component {
                                         let nameEn = `${item.positionData.value_en}, ${item.firstName} ${item.lastName}`
 
                                         return (
-                                            <div className='customize-session' key={index}>
+                                            <div className='customize-session' key={index} onClick={() => this.handleViewDetailDoctor(item)}>
                                                 <div className='background-image background-image-doctor'
                                                     style={{
                                                         backgroundImage: `url(${imageBase64})`
-                                                    }}></div>
+                                                    }}>
+
+                                                </div>
                                                 <div className='session-des'>
                                                     <div>{language === languages.VI ? nameVi : nameEn}</div>
                                                 </div>
@@ -107,4 +110,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Doctor);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Doctor));

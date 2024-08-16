@@ -25,7 +25,6 @@ class UserManage extends Component {
     }
     getAllUsersFromReact = async () => {
         let response = await getAllUsers('ALL')
-        console.log(response)
         if (response && response.ErrorCode === 0) {
             this.setState({
 
@@ -61,11 +60,9 @@ class UserManage extends Component {
                 })
                 emitter.emit('EVENT_CLEAR_MODAL_DATA')
             }
-            console.log("check responce create new user ", response)
         } catch (error) {
             console.log(error)
         }
-        console.log("check data from modal create new user :", data)
     }
 
     EditUser = async (user) => {
@@ -82,7 +79,6 @@ class UserManage extends Component {
         }
     }
     handleEditUser = (user) => {
-        console.log("check edit user :", user)
         this.setState({
             isOpenModalEditUser: true,
             userEdit: user
@@ -91,7 +87,6 @@ class UserManage extends Component {
     handleDeleteUser = async (user) => {
         try {
             let res = await deleteUserService(user.id);
-            console.log("check user infor delete", res)
             if (res && res.ErrorCode === 0) {
                 await this.getAllUsersFromReact()
             } else {

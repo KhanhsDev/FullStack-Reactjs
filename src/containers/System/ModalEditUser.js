@@ -41,7 +41,6 @@ class ModalEditUser extends Component {
                 positionId: user.positionId,
             })
         }
-        console.log("check did mount ", this.props.userEdit)
     }
 
     toggle = () => {

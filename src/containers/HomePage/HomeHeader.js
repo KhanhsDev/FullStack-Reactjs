@@ -16,7 +16,6 @@ class HomeHeader extends Component {
     render() {
 
         let language = this.props.language
-        console.log(language)
         return (
             <>
                 <div className='home-header-container'>
@@ -75,60 +74,62 @@ class HomeHeader extends Component {
                         </div>
                     </div>
                 </div >
-                <div className='home-header-banner'>
-                    <Slider {...this.props.settings}>
+                {this.props.isShowBanner === true &&
+                    <div className='home-header-banner'>
+                        <Slider {...this.props.settings}>
 
-                    </Slider>
+                        </Slider>
 
-                    <div className='home-search'>
-                        <i class="fas fa-search"></i>
-                        <input type="text" placeholder='Tìm chuyên khoa khám bệnh' />
+                        <div className='home-search'>
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder='Tìm chuyên khoa khám bệnh' />
+                        </div>
+                        <div className='home-options'>
+                            <div className='option-child'>
+                                <div className='icon-child'>
+                                    <i class="far fa-hospital"></i>
+                                </div>
+                                <div className='text-child'>
+                                    <FormattedMessage id="home-options.Specialist Examination" />
+                                </div>
+                            </div>
+                            <div className='option-child'>
+                                <div className='icon-child'>
+                                    <i class="fas fa-mobile-alt"></i>
+                                </div>
+                                <div className='text-child'>
+                                    <FormattedMessage id="home-options.Telemedicine" />
+
+                                </div>
+                            </div>
+                            <div className='option-child'>
+                                <div className='icon-child'>
+                                    <i class="fas fa-stethoscope"></i>
+                                </div>
+                                <div className='text-child'>
+                                    <FormattedMessage id="home-options.General Examination" />
+
+                                </div>
+                            </div>
+                            <div className='option-child'>
+                                <div className='icon-child'>
+                                    <i class="fas fa-vials"></i>
+                                </div>
+                                <div className='text-child'>
+                                    <FormattedMessage id="home-options.Medical Tests" />
+                                </div>
+                            </div>
+                            <div className='option-child'>
+                                <div className='icon-child'>
+                                    <i class="fas fa-notes-medical"></i>
+                                </div>
+                                <div className='text-child'>
+                                    <FormattedMessage id="home-options.Dental Examination" />
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div className='home-options'>
-                        <div className='option-child'>
-                            <div className='icon-child'>
-                                <i class="far fa-hospital"></i>
-                            </div>
-                            <div className='text-child'>
-                                <FormattedMessage id="home-options.Specialist Examination" />
-                            </div>
-                        </div>
-                        <div className='option-child'>
-                            <div className='icon-child'>
-                                <i class="fas fa-mobile-alt"></i>
-                            </div>
-                            <div className='text-child'>
-                                <FormattedMessage id="home-options.Telemedicine" />
-
-                            </div>
-                        </div>
-                        <div className='option-child'>
-                            <div className='icon-child'>
-                                <i class="fas fa-stethoscope"></i>
-                            </div>
-                            <div className='text-child'>
-                                <FormattedMessage id="home-options.General Examination" />
-
-                            </div>
-                        </div>
-                        <div className='option-child'>
-                            <div className='icon-child'>
-                                <i class="fas fa-vials"></i>
-                            </div>
-                            <div className='text-child'>
-                                <FormattedMessage id="home-options.Medical Tests" />
-                            </div>
-                        </div>
-                        <div className='option-child'>
-                            <div className='icon-child'>
-                                <i class="fas fa-notes-medical"></i>
-                            </div>
-                            <div className='text-child'>
-                                <FormattedMessage id="home-options.Dental Examination" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                }
             </>
         );
     }

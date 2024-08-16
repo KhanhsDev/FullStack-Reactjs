@@ -94,7 +94,6 @@ const adminReducer = (state = initialState, action) => {
         case actionTypes.FETCH_DOCTOR_SUCCESS:
             state.isLoadingDoctor = false;
             state.Doctor = action.data.data
-            console.log("check state doctor ", state.Doctor)
             return {
                 ...state,
             }

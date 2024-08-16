@@ -81,7 +81,6 @@ export const fetchRoleStart = () => {
                 type: actionTypes.FETCH_ROLE_START
             })
             let res = await getAllCodeService("ROLE")
-            console.log("check res role ", res)
             if (res && res.data) {
                 dispatch(fetchRoleSuccess(res.data))
             } else {
@@ -110,7 +109,6 @@ export const createNewUser = (data) => {
         try {
 
             let res = await createNewUserService(data)
-            console.log("check data user from redux ", res)
             if (res && res.data) {
                 dispatch(createUserSuccess())
 
@@ -205,7 +203,6 @@ export const fetchDoctor = () => {
     return async (dispatch, getState) => {
         try {
             let res = await getAllDoctorService("R2")
-            console.log("check rs ", res)
             if (res && res.ErrorCode === 0) {
                 dispatch(fetchDoctorSuccess(res.data))
             } else {
@@ -230,7 +227,6 @@ export const saveInfoDoctor = (data) => {
         try {
 
             let res = await saveDetailDoctorServices(data)
-            console.log("check data user from redux ", res)
             if (res && res.data) {
                 dispatch({
                     type: actionTypes.SAVE_INFOR_DOCTOR_SUCCESS
