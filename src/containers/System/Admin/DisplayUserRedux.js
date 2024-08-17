@@ -155,7 +155,6 @@ class DisplayUserRedux extends Component {
                         </tbody>
                     </Table>
                 </div >
-                <MdEditor style={{ height: '500px' }} renderHTML={text => mdParser.render(text)} onChange={handleEditorChange} />
 
             </>
         )

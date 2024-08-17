@@ -2,7 +2,7 @@
 
 .navigator-menu {
     display: flex;
-    margin: 0;
+    margin : 0;
     padding: 0;
 
     &.list-unstyled,
@@ -12,15 +12,15 @@
 
     .menu-group {
         &:hover {
-            cursor: pointer;
+            cursor          : pointer;
             background-color: darken($colormain, 5);
         }
 
         .menu-group-name {
-            line-height: 45px;
-            padding: 0 15px;
+            line-height : 45px;
+            padding     : 0 15px;
             border-right: 1px solid $border;
-            font-size: 17px;
+            font-size   : 17px;
 
             &:first-child {
                 border-left: 1px solid $border;
@@ -28,25 +28,24 @@
         }
 
         .menu-list {
-            display: none;
-            background-color: $bg-menu-color;
-            box-shadow: 2px 2px 4px 0 $box-shadow-color;
+            display           : none;
+            background-color  : $bg-menu-color;
+            box-shadow        : 2px 2px 4px 0 $box-shadow-color;
             -webkit-box-shadow: 2px 2px 4px 0 $box-shadow-color;
-            color: $text-in-light;
-            position: absolute;
-            padding: 0;
+            color             : $text-in-light;
+            position          : absolute;
+            padding           : 0;
 
             .menu {
-                width: 200px;
-                padding: 0 15px;
-                height: 35px;
-                line-height: 35px;
+                width         : 100%;
+                padding       : 0 15px;
+                height        : 35px;
+                line-height   : 35px;
                 text-transform: capitalize;
 
                 &.active {
-
                     a {
-                        color: rgb(230, 52, 32);
+                        color      : rgb(230, 52, 32);
                         font-weight: bold;
                     }
 
@@ -55,22 +54,22 @@
 
                 .menu-link {
                     text-decoration: none;
-                    color: $text-in-light;
+                    color          : $text-in-light;
                 }
 
                 .sub-menu-list {
-                    display: none;
-                    background-color: $bg-menu-color;
-                    box-shadow: 2px 2px 4px 0 $box-shadow-color;
+                    display           : none;
+                    background-color  : $bg-menu-color;
+                    box-shadow        : 2px 2px 4px 0 $box-shadow-color;
                     -webkit-box-shadow: 2px 2px 4px 0 $box-shadow-color;
-                    position: absolute;
-                    top: 0;
-                    left: 205px;
-                    padding: 0;
+                    position          : absolute;
+                    top               : 0;
+                    left              : 205px;
+                    padding           : 0;
 
                     .sub-menu {
-                        padding: 0 15px;
-                        height: 35px;
+                        padding    : 0 15px;
+                        height     : 35px;
                         line-height: 35px;
                         white-space: nowrap;
 
@@ -80,7 +79,7 @@
 
                         .sub-menu-link {
                             text-decoration: none;
-                            color: $text-in-light;
+                            color          : $text-in-light;
                         }
 
                         a {
@@ -89,14 +88,14 @@
 
                         &.active a {
                             font-weight: 500;
-                            color: $colormain;
+                            color      : $colormain;
                         }
                     }
                 }
 
                 &.active span {
                     font-weight: 500;
-                    color: $colormain;
+                    color      : $colormain;
                 }
 
                 &:hover {
@@ -108,10 +107,10 @@
                 }
 
                 .icon-right {
-                    display: block;
+                    display : block;
                     position: absolute;
-                    top: 0;
-                    right: 10px;
+                    top     : 0;
+                    right   : 10px;
                 }
             }
         }

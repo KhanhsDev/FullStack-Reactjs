@@ -23,7 +23,7 @@ class Handbook extends Component {
                         </div>
                         <div className='session-about-video'>
                             <iframe width="700px" height="400" src="https://www.youtube.com/embed/gylEJuzv1Sw"
-                                title="CÀ PHÊ KHỞI NGHIỆP VTV1 - BOOKINGCARE - HỆ THỐNG ĐẶT LỊCH KHÁM TRỰC TUYẾN"
+                                title=""
                                 frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>

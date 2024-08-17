@@ -32,7 +32,6 @@ class Doctor extends Component {
         }
     }
     handleViewDetailDoctor = (doctor) => {
-        console.log("View information doctor ", doctor)
         this.props.history.push(`/detail-doctor/${doctor.id}`)
     }
     render() {
@@ -49,7 +48,7 @@ class Doctor extends Component {
         return (
             <>
                 <div className='session-container'>
-                    <div className='session-content'>
+                    <div className='session-content background-doctor-banner'>
                         <div className='session-header'>
                             <span className='session-name'>
                                 <FormattedMessage id="Session.doctor.outstanding doctor" />
@@ -58,7 +57,7 @@ class Doctor extends Component {
                                 <FormattedMessage id="Session.doctor.Read more" />
                             </button>
                         </div>
-                        <div className='session-body'>
+                        <div className='session-body ' >
                             <Slider {...settings}>
 
                                 {doctorArr && doctorArr.length > 0
@@ -86,6 +85,7 @@ class Doctor extends Component {
                                     })
                                 }
                             </Slider>
+
                         </div>
                     </div>
                 </div>

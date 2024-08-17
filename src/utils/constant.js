@@ -26,3 +26,8 @@ export const YesNoObj = {
     YES: 'Y',
     NO: 'N'
 }
+export const role_user = {
+    ADMIN: 'R1',
+    DOCTOR: 'R2',
+    PATIENT: 'R3'
+}

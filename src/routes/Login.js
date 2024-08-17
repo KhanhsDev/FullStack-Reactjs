@@ -27,11 +27,11 @@ class Login extends Component {
         })
     }
 
-    onUsernameChange = (e) => {
+    onChangeUsername = (e) => {
         this.setState({ username: e.target.value })
     }
 
-    onPasswordChange = (e) => {
+    onChangePassword = (e) => {
         this.setState({ password: e.target.value })
     }
 
@@ -109,7 +109,7 @@ class Login extends Component {
                                 type="text"
                                 className="form-control"
                                 value={username}
-                                onChange={this.onUsernameChange}
+                                onChange={this.onChangeUsername}
                             />
                         </div>
 
@@ -122,7 +122,7 @@ class Login extends Component {
                                 type="password"
                                 className="form-control"
                                 value={password}
-                                onChange={this.onPasswordChange}
+                                onChange={this.onChangePassword}
                             />
                         </div>
 

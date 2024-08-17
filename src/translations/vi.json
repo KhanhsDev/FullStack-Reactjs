@@ -60,7 +60,10 @@
             "manage speciallity": "Quản lý chuyên khoa",
             "handbook": "Bài đăng",
             "manage handbook": "Quản lý bài đăng",
-            "display user redux": "hiên thị người dùng"
+            "display user redux": "hiên thị người dùng" 
+        },
+        "doctor": {
+            "manage schedule": "Quản lý lịch khám bệnh"
         }
     },
     "manage-user": {

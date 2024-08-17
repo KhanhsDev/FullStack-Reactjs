@@ -1,60 +1,64 @@
 .session-container {
-    width: 100%;
+    width : 100%;
     height: 350px;
     margin: 50px 0px;
 
     .session-content {
-        margin: 0px 50px;
-        display: flex;
+        margin        : 0px 50px;
+        display       : flex;
         flex-direction: column;
 
+        &.background-doctor-banner {
+            padding-bottom  : 20px;
+            background-image: url(../../../assets/doctor-background.png);
+            border-radius   : 30px;
+        }
+
         .session-header {
-            height: 60px;
-            margin: 0px 20px 20px;
+            height     : 60px;
+            margin     : 0px 20px 20px;
             padding-top: 20px;
 
 
             .session-name {
-                font-size: 19px;
+                font-size     : 19px;
                 text-transform: uppercase;
-                font-weight: 700;
+                font-weight   : 700;
             }
 
             .btn-session-readmore {
-                margin-top: -10.5px;
-                float: right;
-                border: none;
-                outline: none;
+                margin-top      : -10.5px;
+                float           : right;
+                border          : none;
+                outline         : none;
                 background-color: #ebebeb;
-                padding: 10px 10px;
-                font-weight: 600;
-                border-radius: 20px;
+                padding         : 10px 20px;
+                font-weight     : 600;
+                border-radius   : 20px;
+                background-color: #EDFFFA;
 
-                // padding: 20px 10px;
                 &:hover {
-                    background-color: aqua;
+                    background-color: rgb(109, 209, 209);
                 }
             }
         }
 
         .session-body {
-
             .customize-session {
-                height: 250px;
-                border: 2px solid #a59d9d;
-                border-radius: 30px;
+                height         : 250px;
+                border         : 2px solid #a59d9d;
+                border-radius  : 30px;
                 // margin-right: 10px;
-                width: 90% !important;
-                display: flex;
-                // justify-content: space-around;
+                width          : 90% !important;
+                display        : flex;
 
                 .background-image {
                     background-position: center center;
-                    background-repeat: no-repeat;
-                    background-size: cover;
-                    height: 200px;
-                    margin: 20px 20px;
-                    z-index: 1000;
+                    background-repeat  : no-repeat;
+                    background-size    : cover;
+                    height             : 200px;
+                    margin             : 20px 20px;
+                    z-index            : 1000;
 
                     &:hover {
                         cursor: pointer;
@@ -71,10 +75,10 @@
 
                     &.background-image-doctor {
                         background-image: url(../../../assets/doctor/doctor.jpg);
-                        width: 200px;
-                        margin: 25px auto;
-                        border-radius: 50%;
-                        border: none;
+                        width           : 200px;
+                        margin          : 25px auto;
+                        border-radius   : 50%;
+                        border          : none;
                     }
 
                     &.background-handbook {
@@ -84,13 +88,12 @@
 
 
                 .session-des {
-                    height: 50px;
-                    display: flex;
-                    align-items: center;
+                    height         : 50px;
+                    display        : flex;
+                    align-items    : center;
                     justify-content: center;
-                    font-size: 19px;
-                    font-weight: bold;
-
+                    font-size      : 19px;
+                    font-weight    : bold;
                 }
             }
 
@@ -99,16 +102,16 @@
             }
 
             .slick-prev {
-                border: 2px solid #d7d7d7 !important;
+                border          : 2px solid #d7d7d7 !important;
                 background-color: white !important;
-                left: -10px !important;
-                width: 44px !important;
-                height: 48px !important;
-                display: flex !important;
-                align-items: center;
-                justify-content: center;
-                z-index: 2;
-                border-radius: 20px;
+                left            : -10px !important;
+                width           : 44px !important;
+                height          : 48px !important;
+                display         : flex !important;
+                align-items     : center;
+                justify-content : center;
+                z-index         : 2;
+                border-radius   : 20px;
 
                 &:hover {
                     background-color: #a59d9d !important;
@@ -117,21 +120,21 @@
 
             .slick-prev::before {
                 font-family: FontAwesome !important;
-                color: red !important;
+                color      : red !important;
                 font-weight: bold !important;
             }
 
             .slick-next {
                 background-color: white !important;
-                border: 2px solid #d7d7d7 !important;
-                right: -10px !important;
-                width: 44px !important;
-                height: 48px !important;
-                display: flex !important;
-                align-items: center;
-                justify-content: center;
-                z-index: 2 !important;
-                border-radius: 20px;
+                border          : 2px solid #d7d7d7 !important;
+                right           : -10px !important;
+                width           : 44px !important;
+                height          : 48px !important;
+                display         : flex !important;
+                align-items     : center;
+                justify-content : center;
+                z-index         : 2 !important;
+                border-radius   : 20px;
 
 
                 &:hover {
@@ -141,39 +144,36 @@
 
             .slick-next::before {
                 font-family: FontAwesome !important;
-                color: red !important;
+                color      : red !important;
                 font-weight: bold !important;
 
             }
         }
     }
-
-
 }
 
 .session-about {
-    height: 500px !important;
+    height : 500px !important;
     display: flex;
-    margin: 0px 50px;
+    margin : 0px 50px;
 
     .session-about-left {
         width: 50%;
 
         .session-about-header {
-            padding: 20px 30px;
-            font-size: 20px;
-            font-weight: bold;
+            padding       : 20px 30px;
+            font-size     : 20px;
+            font-weight   : bold;
             text-transform: uppercase;
         }
 
         .session-about-video {
             margin-left: 50px;
-
         }
     }
 
     .session-about-right {
-        width: 50%;
+        width : 50%;
         border: 1px solid green;
     }
 }

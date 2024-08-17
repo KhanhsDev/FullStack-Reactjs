@@ -2,16 +2,20 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 
-
 import './HomeHeader.scss'
 import { languages } from '../../utils';
 import { ChangeLanguageApp } from '../../store/actions';
-
 import Slider from "react-slick";
-
+import { withRouter } from 'react-router';
 class HomeHeader extends Component {
     handleChangeLanguage = (language) => {
         this.props.ChangeLanguageAppRedux(language)
+    }
+    returnHomePage = () => {
+        this.props.history.push('/HomePage')
+    }
+    hanldeUserLogin = () => {
+        this.props.history.push('/Login')
     }
     render() {
 
@@ -22,7 +26,7 @@ class HomeHeader extends Component {
                     <div className='home-header-content'>
                         <div className='logo-header'>
                             <i className="fas fa-bars"></i>
-                            <div className='header-logo-image'> </div>
+                            <div className='header-logo-image' onClick={() => this.returnHomePage()}></div>
                         </div>
                         <div className='content-header'>
                             <div className='child-content-header'>
@@ -71,6 +75,18 @@ class HomeHeader extends Component {
                                     <span className='flag-language-en' onClick={() => this.handleChangeLanguage(languages.EN)}> </span>
                                 </div>
                             </div>
+
+
+                        </div>
+                        <div className='header-login'>
+                            <div className='login' >
+                                <button type="button" className="btn btn-warning"
+                                    onClick={() => this.hanldeUserLogin()}
+                                >Login</button>
+                            </div>
+                            <div className='signin'>
+                                <button type="button" className="btn btn-outline-info" style={{ width: 70, margin: 20 }}>Sign in</button>
+                            </div>
                         </div>
                     </div>
                 </div >
@@ -81,13 +97,13 @@ class HomeHeader extends Component {
                         </Slider>
 
                         <div className='home-search'>
-                            <i class="fas fa-search"></i>
+                            <i classname="fas fa-search"></i>
                             <input type="text" placeholder='Tìm chuyên khoa khám bệnh' />
                         </div>
                         <div className='home-options'>
                             <div className='option-child'>
                                 <div className='icon-child'>
-                                    <i class="far fa-hospital"></i>
+                                    <i classname="far fa-hospital"></i>
                                 </div>
                                 <div className='text-child'>
                                     <FormattedMessage id="home-options.Specialist Examination" />
@@ -95,7 +111,7 @@ class HomeHeader extends Component {
                             </div>
                             <div className='option-child'>
                                 <div className='icon-child'>
-                                    <i class="fas fa-mobile-alt"></i>
+                                    <i classname="fas fa-mobile-alt"></i>
                                 </div>
                                 <div className='text-child'>
                                     <FormattedMessage id="home-options.Telemedicine" />
@@ -104,7 +120,7 @@ class HomeHeader extends Component {
                             </div>
                             <div className='option-child'>
                                 <div className='icon-child'>
-                                    <i class="fas fa-stethoscope"></i>
+                                    <i classname="fas fa-stethoscope"></i>
                                 </div>
                                 <div className='text-child'>
                                     <FormattedMessage id="home-options.General Examination" />
@@ -113,7 +129,7 @@ class HomeHeader extends Component {
                             </div>
                             <div className='option-child'>
                                 <div className='icon-child'>
-                                    <i class="fas fa-vials"></i>
+                                    <i classname="fas fa-vials"></i>
                                 </div>
                                 <div className='text-child'>
                                     <FormattedMessage id="home-options.Medical Tests" />
@@ -121,7 +137,7 @@ class HomeHeader extends Component {
                             </div>
                             <div className='option-child'>
                                 <div className='icon-child'>
-                                    <i class="fas fa-notes-medical"></i>
+                                    <i classname="fas fa-notes-medical"></i>
                                 </div>
                                 <div className='text-child'>
                                     <FormattedMessage id="home-options.Dental Examination" />
@@ -148,5 +164,4 @@ const mapDispatchToProps = dispatch => {
         ChangeLanguageAppRedux: (language) => dispatch(ChangeLanguageApp(language))
     };
 };
-
-export default connect(mapStateToProps, mapDispatchToProps)(HomeHeader);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HomeHeader));

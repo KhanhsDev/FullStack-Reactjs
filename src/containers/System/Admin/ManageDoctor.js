@@ -7,6 +7,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import 'react-image-lightbox/style.css';
 import './manageDoctor.scss'
+import { ToastContainer, toast } from 'react-toastify';
+
 
 import MarkdownIt from 'markdown-it';
 import MdEditor from 'react-markdown-editor-lite';
@@ -15,13 +17,10 @@ import 'react-markdown-editor-lite/lib/index.css';
 import Select from 'react-select';
 import e from 'cors';
 import { lang } from 'moment';
-import { languages } from '../../../utils';
+import { languages, manageActions } from '../../../utils';
+import { getDetailDoctorService } from "../../../services/userService"
+import { faKey } from '@fortawesome/free-solid-svg-icons';
 
-const options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' },
-];
 const mdParser = new MarkdownIt(/* Markdown-it options */);
 
 
@@ -35,8 +34,8 @@ class ManageDoctor extends Component {
             contentHTML: '',
             selectedDoctor: null,
             description: '',
-            listDoctors: []
-
+            listDoctors: [],
+            isCreateDetail: false
         }
     }
 
@@ -60,15 +59,71 @@ class ManageDoctor extends Component {
     }
 
     handleOnclickSubmitDoctor = () => {
+        let { isCreateDetail } = this.state
         this.props.saveInfoDoctor({
             contentHTML: this.state.contentHTML,
             contentMarkdown: this.state.contentMarkdown,
             description: this.state.description,
-            doctorId: this.state.selectedDoctor.value
+            doctorId: this.state.selectedDoctor.value,
+            action: isCreateDetail === false ? manageActions.ADD : manageActions.EDIT
         })
+        this.setState({
+            contentMarkdown: '',
+            contentHTML: '',
+            selectedDoctor: null,
+            description: '',
+        })
+        isCreateDetail === false ?
+            toast.success('🦄 Create detail User Successfully', {
+                // toast.promiss('Loading user', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                // transition: "Bounce",
+            })
+            :
+            toast.success('🦄 Update detail User Successfully', {
+                // toast.promiss('Loading user', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                // transition: "Bounce",
+            });
+
     }
-    handleChange = (selectedDoctor) => {
+    handleChange = async (selectedDoctor) => {
         this.setState({ selectedDoctor });
+        let res = await getDetailDoctorService(selectedDoctor.value)
+        console.log("check res get detail infor doctor", res)
+        if (res && res.ErrorCode === 0 && res.data && res.data && res.data.Markdown) {
+            let data = res.data.Markdown
+            console.log("check data markdown", data)
+            this.setState({
+                contentMarkdown: data.contentMarkdown,
+                contentHTML: data.contentHTML,
+                description: data.description,
+                isCreateDetail: true
+            })
+        }
+        else {
+            this.setState({
+                contentMarkdown: '',
+                contentHTML: '',
+                description: '',
+                isCreateDetail: false
+
+            })
+        }
     };
     handleEditorChange = ({ html, text }) => {
         this.setState({
@@ -98,7 +153,7 @@ class ManageDoctor extends Component {
         return result
     }
     render() {
-        let { selectedDoctor, listDoctors } = this.state;
+        let { selectedDoctor, listDoctors, isCreateDetail } = this.state;
         return (
             <>
                 <div className='manage-doctor-container'>
@@ -113,7 +168,6 @@ class ManageDoctor extends Component {
                                 value={selectedDoctor}
                                 onChange={this.handleChange}
                                 options={listDoctors}
-                            // className='form-control' 
                             />
                         </div>
                         <div className='content-right form-group'>
@@ -122,7 +176,6 @@ class ManageDoctor extends Component {
                                 onChange={(event) => this.handleOnchangeDescription(event)}
                                 value={this.state.description}
                             >
-                                sdfsdff
                             </textarea>
                         </div>
                     </div>
@@ -130,13 +183,21 @@ class ManageDoctor extends Component {
                         <MdEditor
                             style={{ height: '500px' }}
                             renderHTML={text => mdParser.render(text)}
-                            onChange={this.handleEditorChange} />
+                            onChange={this.handleEditorChange}
+                            value={this.state.contentMarkdown}
+                        />
                     </div>
-                    <button type="button" class="btn-submit-markdown btn btn-primary"
-                        onClick={() => this.handleOnclickSubmitDoctor()}
-                    >Primary
+                    <button type="button"
+
+                        class={isCreateDetail === true ? "btn-submit-markdown btn btn-primary" : "btn-submit-markdown btn btn-success "} onClick={() => this.handleOnclickSubmitDoctor()}
+                    >
+                        {isCreateDetail === false ?
+                            <span>Tạo thông tin</span>
+                            :
+                            <span>Lưu thông tin</span>
+                        }
                     </button>
-                </div>
+                </div >
 
             </>
         )
