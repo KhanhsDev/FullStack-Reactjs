@@ -24,7 +24,6 @@ class Header extends Component {
         this.props.ChangeLanguageAppRedux(language)
     }
     componentDidMount() {
-        console.log("Check user info", this.props.userInfo)
         let { userInfo } = this.props
         if (userInfo && !_.userInfo) {
             let roleId = userInfo.roleId

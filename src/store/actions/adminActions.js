@@ -8,9 +8,6 @@ import { dateFilter } from 'react-bootstrap-table2-filter';
 import { ToastContainer, toast } from 'react-toastify';
 import { legacy_createStore } from 'redux';
 
-// export const fetchGenderStart = () => ({
-//     type: actionTypes.FETCH_GENDER_START
-// })
 
 export const fetchGenderStart = () => {
     return async (dispatch, getState) => {
@@ -243,3 +240,26 @@ export const saveInfoDoctor = (data) => {
         }
     }
 }
+
+export const fetchScheduleHour = () => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await getAllCodeService("TIME")
+            if (res && res.ErrorCode === 0) {
+                dispatch(fetchScheduleHourSuccess(res.data))
+            } else {
+                dispatch(fetchScheduleHourrFail())
+            }
+        } catch (error) {
+            dispatch(fetchDoctorFail())
+
+        }
+    }
+}
+export const fetchScheduleHourSuccess = (scheduleTime) => ({
+    type: actionTypes.FETCH_ALLCODE_HOUR_SUCCESS,
+    data: scheduleTime
+})
+export const fetchScheduleHourrFail = () => ({
+    type: actionTypes.FETCH_ALLCODE_HOUR_FAIL
+})

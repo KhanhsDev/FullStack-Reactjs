@@ -97,7 +97,7 @@ class HomeHeader extends Component {
                         </Slider>
 
                         <div className='home-search'>
-                            <i classname="fas fa-search"></i>
+                            <i classname="far fa-search"></i>
                             <input type="text" placeholder='Tìm chuyên khoa khám bệnh' />
                         </div>
                         <div className='home-options'>

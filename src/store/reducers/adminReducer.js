@@ -11,6 +11,7 @@ const initialState = {
     positions: [],
     AllUser: [],
     Doctor: [],
+    scheduleHour: []
 }
 
 const adminReducer = (state = initialState, action) => {
@@ -100,6 +101,18 @@ const adminReducer = (state = initialState, action) => {
         case actionTypes.FETCH_DOCTOR_FAIL:
             state.isLoadingDoctor = false;
             state.Doctor = []
+            return {
+                ...state,
+            }
+        // get allcode schedule hour
+        case actionTypes.FETCH_ALLCODE_HOUR_SUCCESS:
+            state.scheduleHour = action.data
+            console.log("check action data", action.data)
+            return {
+                ...state,
+            }
+        case actionTypes.FETCH_ALLCODE_HOUR_FAIL:
+            state.scheduleHour = []
             return {
                 ...state,
             }

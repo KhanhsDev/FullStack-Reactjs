@@ -81,5 +81,12 @@
         "roleID": "RoleID",
         "image": "Image",
         "submit": "Submit"
+    },
+    "manage schedule": {
+        "manage doctor schedule": "Managing Doctor Consultation Plans ",
+        "choose doctor": "Choose a doctor",
+        "choose date": "Choose date",
+        "choose time": "Choose time",
+        "Submit": "Submit"
     }
 }

@@ -33,6 +33,7 @@ class Login extends Component {
             isShowhidePassWord: !this.state.isShowhidePassWord
         })
     }
+
     handleOnclinkLogin = async () => {
         this.setState({
             errMessage: ""
@@ -56,6 +57,12 @@ class Login extends Component {
                 }
             }
 
+        }
+    }
+    // on press enter key
+    handleOnPressEnterKey = (event) => {
+        if (event.key === 'Enter' || event.keyCode === 13) {
+            this.handleOnclinkLogin()
         }
     }
     render() {
@@ -83,6 +90,7 @@ class Login extends Component {
                                         placeholder='Enter Your Password'
                                         value={this.state.password}
                                         onChange={(event) => this.handleOnChangePassword(event)}
+                                        onKeyDown={(event) => this.handleOnPressEnterKey(event)}
                                     />
                                     <span
                                         onClick={() => this.handleShowHidePassword()}

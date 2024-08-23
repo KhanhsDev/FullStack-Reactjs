@@ -20,7 +20,7 @@ class Speciality extends Component {
         return (
             <>
                 <div className='session-container'>
-                    <div className='session-content'>
+                    <div className='session-content  background-speciality-banner'>
                         <div className='session-header'>
                             <span className='session-name'>
                                 <FormattedMessage id="Session.speciality.speciality" />

@@ -38,8 +38,13 @@ const actionTypes = Object.freeze({
     FETCH_DOCTOR_SUCCESS: "FETCH_DOCTOR_SUCCESS",
     FETCH_DOCTOR_FAIL: "FETCH_DOCTOR_FAIL",
 
+    // chỉnh sửa và thêm thông tin cho bác sĩ ở trang thông tin chi tiết của bác sĩ
     SAVE_INFOR_DOCTOR_SUCCESS: "SAVE_INFOR_DOCTOR_SUCCESS",
-    SAVE_INFOR_DOCTOR_FAIL: "SAVE_INFOR_DOCTOR_FAIL"
+    SAVE_INFOR_DOCTOR_FAIL: "SAVE_INFOR_DOCTOR_FAIL",
+
+    // lấy thông tin các khung giờ đặt lịch khám bệnh trong db ra phía sắp xếp lịch khám của bác sĩ 
+    FETCH_ALLCODE_HOUR_SUCCESS: "FETCH_ALLCODE_HOUR_SUCCESS",
+    FETCH_ALLCODE_HOUR_FAIL: "FETCH_ALLCODE_HOUR_FAIL",
 })
 
 export default actionTypes;

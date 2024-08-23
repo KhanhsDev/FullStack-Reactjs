@@ -1,0 +1,26 @@
+.manage-schedule-container {
+    .manage-schedule-title {
+        font-size     : 20px;
+        font-weight   : bold;
+        text-align    : center;
+        text-transform: uppercase;
+        margin        : 20px 0px;
+    }
+
+    .manage-schedule-content {
+        .pick-time-container {
+            margin-top: 20px;
+            display   : flex;
+            flex-wrap : wrap;
+            gap       : 10px;
+            width     : 400px;
+            /* Thêm khoảng cách giữa các nút */
+        }
+
+        .schedule-time-doctor {
+            flex: 0 1 calc(50% - 10px);
+            /* Trừ đi khoảng cách đã thiết lập */
+        }
+
+    }
+}
